@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaWorkshop.WebUI.Models
+namespace CaWorkshop.Domain.Entities
 {
     public enum PriorityLevel
     {
