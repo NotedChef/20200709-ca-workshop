@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.WebUI", "CaWorkshop.WebUI\CaWorkshop.WebUI.csproj", "{C70C541B-32EE-447F-9B81-C0260AA2A55E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.WebUI", "CaWorkshop.WebUI\CaWorkshop.WebUI.csproj", "{C70C541B-32EE-447F-9B81-C0260AA2A55E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Domain", "CaWorkshop.Domain\CaWorkshop.Domain.csproj", "{E73FCEB3-4111-408B-8D1C-53EFA7459FAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Domain", "CaWorkshop.Domain\CaWorkshop.Domain.csproj", "{E73FCEB3-4111-408B-8D1C-53EFA7459FAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Application", "CaWorkshop.Application\CaWorkshop.Application.csproj", "{2B21458D-63A1-4387-92FE-635EE344D5B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Application", "CaWorkshop.Application\CaWorkshop.Application.csproj", "{2B21458D-63A1-4387-92FE-635EE344D5B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Infrastructure", "CaWorkshop.Infrastructure\CaWorkshop.Infrastructure.csproj", "{3D22FB56-55BB-41E3-AEA1-4E01927A71F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Infrastructure", "CaWorkshop.Infrastructure\CaWorkshop.Infrastructure.csproj", "{3D22FB56-55BB-41E3-AEA1-4E01927A71F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Application.UnitTests", "CaWorkshop.Application.UnitTests\CaWorkshop.Application.UnitTests.csproj", "{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D1F45FD0-749C-4C2D-854D-C0736F32C1CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{426AD808-8E46-4C6E-88F9-093D346B5276}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C70C541B-32EE-447F-9B81-C0260AA2A55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +75,30 @@ Global
 		{3D22FB56-55BB-41E3-AEA1-4E01927A71F9}.Release|x64.Build.0 = Release|Any CPU
 		{3D22FB56-55BB-41E3-AEA1-4E01927A71F9}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D22FB56-55BB-41E3-AEA1-4E01927A71F9}.Release|x86.Build.0 = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|x64.Build.0 = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|x64.ActiveCfg = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|x64.Build.0 = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C70C541B-32EE-447F-9B81-C0260AA2A55E} = {D1F45FD0-749C-4C2D-854D-C0736F32C1CE}
+		{E73FCEB3-4111-408B-8D1C-53EFA7459FAF} = {D1F45FD0-749C-4C2D-854D-C0736F32C1CE}
+		{2B21458D-63A1-4387-92FE-635EE344D5B7} = {D1F45FD0-749C-4C2D-854D-C0736F32C1CE}
+		{3D22FB56-55BB-41E3-AEA1-4E01927A71F9} = {D1F45FD0-749C-4C2D-854D-C0736F32C1CE}
+		{2F3E17B7-54D1-4948-9EA7-3BA0E192D009} = {426AD808-8E46-4C6E-88F9-093D346B5276}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5FDDD01-691A-492C-9623-2258BEC3F39A}
 	EndGlobalSection
 EndGlobal
