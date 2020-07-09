@@ -25,7 +25,21 @@ namespace CaWorkshop.WebUI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoList>>> GetTodoLists()
         {
-            return await _context.TodoLists.ToListAsync();
+            return await _context.TodoLists
+                .Select(l => new TodoList  // project required to prevent circular reference from item back to list
+                {
+                    Id = l.Id,
+                    Title = l.Title,
+                    Items = l.Items.Select(i => new TodoItem
+                    {
+                        Id = i.Id,
+                        ListId = i.ListId,
+                        Title = i.Title,
+                        Done = i.Done,
+                        Priority = i.Priority,
+                        Note = i.Note
+                    }).ToList()
+                }).ToListAsync();
         }
 
         // GET: api/TodoLists/5
@@ -78,17 +92,17 @@ namespace CaWorkshop.WebUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<TodoList>> PostTodoList(TodoList todoList)
+        public async Task<ActionResult<int>> PostTodoList(TodoList todoList)
         {
             _context.TodoLists.Add(todoList);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTodoList", new { id = todoList.Id }, todoList);
+            return todoList.Id;
         }
 
         // DELETE: api/TodoLists/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TodoList>> DeleteTodoList(int id)
+        public async Task<IActionResult> DeleteTodoList(int id)
         {
             var todoList = await _context.TodoLists.FindAsync(id);
             if (todoList == null)
@@ -99,7 +113,7 @@ namespace CaWorkshop.WebUI.Controllers
             _context.TodoLists.Remove(todoList);
             await _context.SaveChangesAsync();
 
-            return todoList;
+            return NoContent();
         }
 
         private bool TodoListExists(int id)
