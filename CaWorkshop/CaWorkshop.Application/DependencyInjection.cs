@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CaWorkshop.Application.Common.Behaviours;
+using CleanArchitecture.Application.Common.Behaviours;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ namespace CaWorkshop.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             
