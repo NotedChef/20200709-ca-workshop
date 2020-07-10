@@ -7,7 +7,7 @@ using Xunit;
 
 namespace CaWorkshop.Application.UnitTests.TodoLists.Commands.CreateTodoList
 {
-    public class CreateTodoListCommandTests : TestBase
+    public class CreateTodoListCommandTests : TestFixture
     {
         private readonly ApplicationDbContext _context;
 

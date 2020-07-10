@@ -8,16 +8,16 @@ using Xunit;
 
 namespace CaWorkshop.Application.UnitTests.TodoLists.Queries.GetTodoLists
 {
-    [Collection("QueryTests")]
-    public class GetTodoListsQueryTests
+    [Collection(nameof(QueryCollection))]
+    public class GetTodoListsQueryTests 
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetTodoListsQueryTests()
+        public GetTodoListsQueryTests(TestFixture fixture)
         {
-            _context = DbContextFactory.Create();
-            _mapper = MapperFactory.Create();
+            _context = fixture.Context;
+            _mapper = fixture.Mapper;
         }
 
         [Fact]

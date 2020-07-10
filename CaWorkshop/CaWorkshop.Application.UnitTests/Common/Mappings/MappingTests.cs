@@ -26,11 +26,9 @@ namespace CaWorkshop.Application.UnitTests.Common.Mapping
         [Theory]
         [InlineData(typeof(TodoList), typeof(TodoListDto))]
         [InlineData(typeof(TodoItem), typeof(TodoItemDto))]
-        public void ShouldSupportMappingFromSourceToDestination
-            (Type source, Type destination)
+        public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             var instance = Activator.CreateInstance(source);
-
             _mapper.Map(instance, source, destination);
         }
     }

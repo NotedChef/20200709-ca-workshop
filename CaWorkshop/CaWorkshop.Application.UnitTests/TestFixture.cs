@@ -4,9 +4,9 @@ using System;
 
 namespace CaWorkshop.Application.UnitTests
 {
-    public class TestBase : IDisposable
+    public class TestFixture : IDisposable
     {
-        public TestBase()
+        public TestFixture()
         {
             Context = DbContextFactory.Create();
             Mapper = MapperFactory.Create();

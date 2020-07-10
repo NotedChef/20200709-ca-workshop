@@ -16,43 +16,14 @@ namespace CaWorkshop.Application
             IConfiguration configuration)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-            services.AddTransient(typeof(IPipelineBehavior<,>),
-                typeof(ValidationBehavior<,>));
-
-            services.AddAllRequestValidators();
+            
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
-        }
-
-        private static IServiceCollection AddAllRequestValidators(
-            this IServiceCollection services)
-        {
-            var validatorType = typeof(IValidator<>);
-
-            var validatorTypes = Assembly.GetExecutingAssembly()
-                .GetExportedTypes()
-                .Where(t => t.GetInterfaces().Any(i =>
-                    i.IsGenericType &&
-                    i.GetGenericTypeDefinition() == validatorType))
-                .ToList();
-
-            foreach (var validator in validatorTypes)
-            {
-                var requestType = validator.GetInterfaces()
-                    .Where(i => i.IsGenericType &&
-                        i.GetGenericTypeDefinition() == typeof(IValidator<>))
-                    .Select(i => i.GetGenericArguments()[0])
-                    .First();
-
-                var validatorInterface = validatorType
-                    .MakeGenericType(requestType);
-
-                services.AddTransient(validatorInterface, validator);
-            }
-
-            return services;
-        }
+        }        
     }
 }

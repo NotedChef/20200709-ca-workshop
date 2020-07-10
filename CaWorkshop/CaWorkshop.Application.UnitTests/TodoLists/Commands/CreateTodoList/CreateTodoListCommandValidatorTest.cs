@@ -1,11 +1,12 @@
 ﻿using CaWorkshop.Application.TodoLists.Commands.CreateTodoList;
 using CaWorkshop.Infrastructure.Persistence;
 using Shouldly;
+using System.Linq;
 using Xunit;
 
 namespace CaWorkshop.Application.UnitTests.TodoLists.Commands.CreateTodoList
 {
-    public class CreateTodoListCommandValidatorTests : TestBase
+    public class CreateTodoListCommandValidatorTests : TestFixture
     {
         private readonly ApplicationDbContext _context;
 
@@ -42,6 +43,7 @@ namespace CaWorkshop.Application.UnitTests.TodoLists.Commands.CreateTodoList
             var result = validator.Validate(command);
 
             result.IsValid.ShouldBe(false);
+            result.Errors.Any(e => e.PropertyName == "Title" && e.ErrorMessage == "Title is not unique.");
         }
     }
 }

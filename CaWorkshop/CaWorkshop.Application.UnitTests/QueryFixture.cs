@@ -2,6 +2,6 @@
 
 namespace CaWorkshop.Application.UnitTests
 {
-    [CollectionDefinition("QueryTests")]
-    public class QueryFixture : ICollectionFixture<TestBase> { }
+    [CollectionDefinition(nameof(QueryCollection))]
+    public class QueryCollection : ICollectionFixture<TestFixture> { }
 }
