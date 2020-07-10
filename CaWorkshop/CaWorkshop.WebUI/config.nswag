@@ -1,0 +1,12 @@
+{
+  "runtime": "NetCore31",
+  "defaultVariables": null,
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "http://redocly.github.io/redoc/openapi.yaml",
+      "output": null,
+      "newLineBehavior": "Auto"
+    }
+  },
+  "codeGenerators": {}
+}
