@@ -8,6 +8,11 @@ using CaWorkshop.Application;
 using CaWorkshop.Infrastructure;
 using CleanArchitecture.WebUI.Common;
 using CaWorkshop.WebUI.Filters;
+using CaWorkshop.Application.Common.Interfaces;
+using CaWorkshop.WebUI.Services;
+using System.Linq;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace CaWorkshop.WebUI
 {
@@ -23,8 +28,11 @@ namespace CaWorkshop.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddInfrastructure(Configuration);
             services.AddApplication(Configuration);
+            services.AddInfrastructure(Configuration);
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddControllersWithViews(options =>
                 options.Filters.Add(new ApiExceptionFilter()));
@@ -39,6 +47,15 @@ namespace CaWorkshop.WebUI
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "CaWorkshop API";
+                configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type into the textbox: Bearer {your JWT token}."
+                });
+
+                configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
             });
         }
 
